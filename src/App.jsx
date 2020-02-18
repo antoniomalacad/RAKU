@@ -4,6 +4,7 @@ import Weather from "./components/Weather";
 import { useEffect, useState } from "react";
 import "./App.css";
 import quotes from "./utils/quotes";
+import Nasa from "./components/Nasa";
 
 function App() {
   const [currentQuote, setCurrentQuote] = useState("");
@@ -28,6 +29,7 @@ function App() {
         </a>
       </header>
       <Weather />
+      <Nasa />
     </div>
   );
 }
