@@ -1,24 +1,23 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import quotes from './utils/quotes';
+import React from "react";
+import logo from "./logo.svg";
+import Weather from "./components/Weather";
+import { useEffect, useState } from "react";
+import "./App.css";
+import quotes from "./utils/quotes";
 
 function App() {
   const [currentQuote, setCurrentQuote] = useState("");
   useEffect(() => {
-    quotes.get().then((quote) => {
+    quotes.get().then(quote => {
       setCurrentQuote(quote);
-    })
-  },[]);
+    });
+  }, []);
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <div>
-          {currentQuote.content}
-        </div>
+        <div>{currentQuote.content}</div>
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -28,6 +27,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <Weather />
     </div>
   );
 }
