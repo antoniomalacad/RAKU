@@ -1,4 +1,5 @@
 const defaultState = {
+  quotes: []
 };
 
 const reducer = (state = defaultState, action) => {
