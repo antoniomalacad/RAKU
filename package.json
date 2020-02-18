@@ -25,8 +25,8 @@
     "eject": "react-scripts eject",
     "start": "node ./server/index.js",
     "serve": "nodemon ./server/index.js",
-    "migrate": "knex migrate:up --knexfile=./server/knexfile.js",
-    "rollback": "knex migrate:down --knexfile=./server/knexfile.js"
+    "migrate": "knex migrate:up --knexfile=./knexfile.js",
+    "rollback": "knex migrate:down --knexfile=./knexfile.js"
   },
   "eslintConfig": {
     "extends": "react-app"
