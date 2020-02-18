@@ -47,11 +47,10 @@ yarn start
 
 
 ## API
-We used Rakuten Rapid API
-https://english.api.rakuten.net/
-•GOODREADS BEST QUOTES
-•Dark Sky
-•NasaAPI
-•Bing News Search
+We used Rakuten Rapid API => https://english.api.rakuten.net/   
+•GOODREADS BEST QUOTES   
+•Dark Sky   
+•NasaAPI   
+•Bing News Search   
 
 
