@@ -18,7 +18,10 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <div>{currentQuote.content}</div>
+        <div>
+          {currentQuote.quote}
+          <div>{currentQuote.author}</div>
+        </div>
         <a
           className="App-link"
           href="https://reactjs.org"
