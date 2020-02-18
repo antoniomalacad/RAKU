@@ -3,7 +3,7 @@ require("dotenv").config();
 
 module.exports = {
   get: function() {
-    axios(
+    return axios(
       "https://dark-sky.p.rapidapi.com/35.6762,139.6503?lang=en&units=auto",
       {
         method: "GET",
