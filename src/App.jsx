@@ -7,6 +7,7 @@ import Nasa from "./components/Nasa";
 import Weather from "./components/Weather";
 import Quote from "./components/Quote";
 import News from "./components/News";
+import Joke from "./components/Joke";
 import Emails from "./components/Emails";
 import Cats from "./components/Cats";
 
@@ -50,6 +51,7 @@ function App() {
             </Typography>
           </Toolbar>
         </AppBar>
+
       </div>
       <header></header>
       <Grid
