@@ -20,7 +20,7 @@ export default function Nasa() {
   }, []);
 
   return (
-    <div>
+    <div className="nasa-parent">
       <h1>Nasa</h1>
       <p>{explanation}</p>
       <h3>{imageTitle}</h3>
