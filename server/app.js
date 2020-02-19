@@ -60,4 +60,24 @@ app.get("/api/weather", async (req, res) => {
   }
 });
 
+// horoscopes
+app.post("/api/horoscope", async (req, res) => {
+  try {
+    const horoscopes = await axios.post(
+      "https://sameer-kumar-aztro-v1.p.rapidapi.com/",
+      {
+        headers: {
+          "x-rapidapi-host": "sameer-kumar-aztro-v1.p.rapidapi.com",
+          "x-rapidapi-key": process.env.API_KEY
+        },
+        params: {
+          sign: req.body
+        }
+      }
+    );
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 module.exports = app;

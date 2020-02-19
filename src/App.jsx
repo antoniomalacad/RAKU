@@ -8,6 +8,7 @@ import Weather from "./components/Weather";
 import Quote from "./components/Quote";
 import News from "./components/News";
 import Emails from "./components/Emails";
+import Horoscope from "./components/Horoscope";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Weather />
         <Nasa />
         <News />
+        <Horoscope />
       </div>
     </div>
   );
