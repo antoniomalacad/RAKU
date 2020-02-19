@@ -6,6 +6,7 @@ const db = require("knex")(require("../knexfile.js"));
 
 const quotes = require("./models/quotes.js")(db);
 const news = require("./models/news.js")(db);
+const emails = require("./models/emails.js")(db);
 
 const app = express();
 app.use(express.json());
@@ -27,6 +28,22 @@ app.get("/api/news", async (req, res) => {
     .catch(e => console.log(e.message));
 });
 
+app.put("/api/email-times", async (req, res) => {
+  emails
+    .addTimes(req.body)
+    .then(data => res.json(data))
+    .catch(e => console.log(e.message));
+})
+
+app.get("/api/email-times/:email", async (req, res) => {
+  emails
+    .getTimes(req.params.email)
+    .then(data => {
+      res.json(data)
+    })
+    .catch(e => console.log(e.message));
+});
+
 // nasa!!
 app.get("/api/nasa", async (req, res) => {
   try {
@@ -34,8 +51,8 @@ app.get("/api/nasa", async (req, res) => {
       `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}`
     );
 
+    res.status(200);
     res.send(nasa.data);
-    res.sendStatus(200);
   } catch (error) {
     console.error(error);
   }
@@ -53,8 +70,8 @@ app.get("/api/weather", async (req, res) => {
         }
       }
     );
+    res.status(200);
     res.send(weather.data);
-    res.sendStatus(200);
   } catch (error) {
     console.error(error);
   }

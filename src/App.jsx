@@ -24,6 +24,7 @@ function App() {
         </a>
       </header>
       <div className="parent">
+        <Emails/>
         <Quote />
         <Weather />
         <Nasa />
