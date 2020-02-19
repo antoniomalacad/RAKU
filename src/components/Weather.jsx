@@ -222,8 +222,14 @@ export default function Weather() {
 
   return (
     <div className="weather">
-      <h1>THE WEATHER</h1>
-      <Grid container display="flex" flexDirection="row" spacing={1}>
+      <Typography variant="h3">Weather</Typography>
+      <Grid
+        container
+        display="flex"
+        flexDirection="row"
+        spacing={1}
+        justifyContent="center"
+      >
         {renderWeather()}
       </Grid>
     </div>
