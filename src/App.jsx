@@ -22,10 +22,12 @@ function App() {
           Learn React
         </a>
       </header>
-      <Quote />
-      <Weather />
-      <Nasa />
-      <News />
+      <div className="parent">
+        <Quote />
+        <Weather />
+        <Nasa />
+        <News />
+      </div>
     </div>
   );
 }
