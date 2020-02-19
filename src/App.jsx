@@ -9,6 +9,7 @@ import Quote from "./components/Quote";
 import News from "./components/News";
 import Joke from "./components/Joke";
 import Emails from "./components/Emails";
+import Horoscope from "./components/Horoscope";
 import Cats from "./components/Cats";
 
 //Material-UI stuff
@@ -37,7 +38,8 @@ function App() {
   const classes = useStyles();
 
   return (
-    <div className="App">
+    <div className="parent">
+      <Horoscope />
       <div className={classes.root}>
         <AppBar position="static" className={classes.root}>
           <Toolbar className={classes.root}>

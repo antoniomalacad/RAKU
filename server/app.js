@@ -78,4 +78,18 @@ app.get("/api/weather", async (req, res) => {
   }
 });
 
+// horoscopes
+app.post("/api/horoscope", async (req, res) => {
+  const input = req.body;
+  try {
+    const horoscopes = await axios.post(
+      `https://aztro.sameerkumar.website/?sign=${input.horoscope}&day=today`
+    );
+    res.send(horoscopes.data);
+    res.status(200);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 module.exports = app;
