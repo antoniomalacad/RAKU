@@ -7,6 +7,8 @@ import Nasa from "./components/Nasa";
 import Weather from "./components/Weather";
 import Quote from "./components/Quote";
 import News from "./components/News";
+import Emails from "./components/Emails";
+import Cats from "./components/Cats";
 
 //Material-UI stuff
 import Grid from "@material-ui/core/Grid";
@@ -28,6 +30,10 @@ const useStyles = makeStyles(theme => ({
   quote: {
     padding: theme.spacing(2),
     maxHeight: 275
+  },
+
+  weather: {
+    padding: theme.spacing(2)
   }
 }));
 
@@ -56,7 +62,10 @@ function App() {
         <Grid item className={classes.quote}>
           <Quote />
         </Grid>
-        <Weather className="weather" />
+
+        <Weather className={classes.weather} />
+
+        <Cats />
 
         <Nasa className="nasa" />
 
