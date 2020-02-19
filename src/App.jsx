@@ -7,6 +7,8 @@ import Nasa from "./components/Nasa";
 import Weather from "./components/Weather";
 import Quote from "./components/Quote";
 import News from "./components/News";
+import Cats from "./components/Cats";
+import Emails from "./components/Emails";
 
 function App() {
   return (
