@@ -7,6 +7,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles({
   root: {
@@ -221,17 +222,19 @@ export default function Weather() {
   */
 
   return (
-    <div className="weather">
-      <Typography variant="h3">Weather</Typography>
-      <Grid
-        container
-        display="flex"
-        flexDirection="row"
-        spacing={1}
-        justifyContent="center"
-      >
-        {renderWeather()}
-      </Grid>
-    </div>
+    <Container>
+      <div className="weather">
+        <Typography variant="h3">Weather</Typography>
+        <Grid
+          container
+          display="flex"
+          flexDirection="row"
+          spacing={1}
+          justifyContent="center"
+        >
+          {renderWeather()}
+        </Grid>
+      </div>
+    </Container>
   );
 }
