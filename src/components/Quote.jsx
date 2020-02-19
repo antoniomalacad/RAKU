@@ -29,26 +29,24 @@ export default function Quote() {
 
   //in progress with material ui
   return (
-    <div>
-      <Card className={classes.root}>
-        <CardContent>
-          <div>
-            <Typography
-              className={classes.title}
-              color="textSecondary"
-              gutterBottom
-            >
-              Quote of the Day
-            </Typography>
-            <Typography variant="h5" component="h2">
-              {quote.quote}
-            </Typography>
-            <Typography variant="body2" component="p">
-              - {quote.author}
-            </Typography>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+    <Card className={classes.root}>
+      <CardContent>
+        <div>
+          <Typography
+            className={classes.title}
+            color="textSecondary"
+            gutterBottom
+          >
+            Quote of the Day
+          </Typography>
+          <Typography variant="h5" component="h2">
+            {quote.quote}
+          </Typography>
+          <Typography variant="body2" component="p" color="textSecondary">
+            - {quote.author}
+          </Typography>
+        </div>
+      </CardContent>
+    </Card>
   );
 }

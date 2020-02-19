@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Container from "@material-ui/core/Container";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import CssBaseline from "@material-ui/core/CssBaseline"; //move to app.jsx
 import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(theme => ({
+  control: {
+    padding: theme.spacing(3)
+  }
+}));
 
 export default function Nasa() {
+  const classes = useStyles();
   const [explanation, setExplanation] = useState("");
   const [image, setImage] = useState("");
   const [imageTitle, setImageTitle] = useState("");
@@ -27,11 +36,15 @@ export default function Nasa() {
     <React.Fragment>
       <CssBaseline />
       <Container maxWidth="sm">
-        <h1>Nasa</h1>
-        <p>{explanation}</p>
-        <h3>{imageTitle}</h3>
-        <img src={image} alt="starry sky"></img>
+        <Typography variant="h3">Nasa</Typography>
+        <Typography variant="body1">{explanation}</Typography>
+        <Typography variant="h6" className={classes.control}>
+          {imageTitle}
+        </Typography>
       </Container>
+      <Box width="100%" className="nasa">
+        <img src={image} alt="starry sky"></img>
+      </Box>
     </React.Fragment>
   );
 }
