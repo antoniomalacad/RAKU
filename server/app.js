@@ -41,4 +41,23 @@ app.get("/api/nasa", async (req, res) => {
   }
 });
 
+// weather
+app.get("/api/weather", async (req, res) => {
+  try {
+    const weather = await axios.get(
+      "https://dark-sky.p.rapidapi.com/35.6762,139.6503?lang=en&units=auto",
+      {
+        headers: {
+          "x-rapidapi-host": "dark-sky.p.rapidapi.com",
+          "x-rapidapi-key": process.env.API_KEY
+        }
+      }
+    );
+    res.send(weather.data);
+    res.sendStatus(200);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 module.exports = app;
