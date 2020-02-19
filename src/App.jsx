@@ -8,6 +8,7 @@ import Weather from "./components/Weather";
 import Quote from "./components/Quote";
 import News from "./components/News";
 import Emails from "./components/Emails";
+import Cats from "./components/Cats";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         </a>
       </header>
       <div className="parent">
+        <Cats />
         <Quote />
         <Weather />
         <Nasa />
