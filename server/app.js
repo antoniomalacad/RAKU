@@ -5,6 +5,7 @@ const axios = require("axios");
 const db = require("knex")(require("../knexfile.js"));
 
 const quotes = require("./models/quotes.js")(db);
+const news = require("./models/news.js")(db);
 
 const app = express();
 app.use(express.json());
@@ -13,6 +14,14 @@ app.use(express.static(path.join(__dirname, "..", "build")));
 // happiness quotes
 app.get("/api/quotes", async (req, res) => {
   quotes
+    .get()
+    .then(data => res.json(data))
+    .catch(e => console.log(e.message));
+});
+
+// happiness quotes
+app.get("/api/news", async (req, res) => {
+  news
     .get()
     .then(data => res.json(data))
     .catch(e => console.log(e.message));
