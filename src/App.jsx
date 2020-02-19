@@ -28,11 +28,6 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1
   },
-  quote: {
-    padding: theme.spacing(2),
-    maxHeight: 275
-  },
-
   weather: {
     padding: theme.spacing(2)
   }
