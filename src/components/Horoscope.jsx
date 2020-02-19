@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function Horoscope() {
-  const [horscopes, setHoroscopes] = useState([]);
+  const [horoscopes, setHoroscopes] = useState([]);
+  const [selectedHoroscope, setSelectedHoroscope] = useState("");
   const list = [
     "aries",
     "taurus",
@@ -19,11 +20,15 @@ export default function Horoscope() {
   ];
   useEffect(() => {
     const getHoroscopes = async () => {
-      const result = list.map(async horoscope => {
-        // return await axios.post("/api/horoscope", horoscope);
+      const result = [];
+      list.map(async horoscope => {
+        return await axios.post("/api/horoscope", { horoscope }).then(res => {
+          res.data.src = JSON.parse(res.config.data).horoscope;
+          result.push(res.data);
+        });
       });
-      console.log(result);
-      // setHoroscopes(results);
+
+      setHoroscopes(result);
     };
     getHoroscopes();
   }, []);
@@ -31,12 +36,22 @@ export default function Horoscope() {
   const selectHoroscope = async e => {
     const selected = e.target.value;
     if (selected !== "") {
-      // await axios.post("api/horoscope", selected).then(res => console.log(res));
+      setSelectedHoroscope(selected);
+      console.log("picked");
     }
   };
 
+  console.log(horoscopes);
+
   const renderResult = () => {
-    return <div className="horoscope-result">Results go here</div>;
+    if (horoscopes.length === 12) {
+      horoscopes.find(h => {
+        if (h.src === selectedHoroscope) {
+          console.log("result", h.description);
+          return <div className="horoscope-result">{h.description}</div>;
+        }
+      });
+    }
   };
 
   const renderForm = () => {

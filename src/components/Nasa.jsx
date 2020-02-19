@@ -1,37 +1,56 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Container from "@material-ui/core/Container";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import CssBaseline from "@material-ui/core/CssBaseline"; //move to app.jsx
 import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(theme => ({
+  control: {
+    padding: theme.spacing(3)
+  }
+}));
 
 export default function Nasa() {
+  const classes = useStyles();
   const [explanation, setExplanation] = useState("");
   const [image, setImage] = useState("");
   const [imageTitle, setImageTitle] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getNasa = async () => {
       const results = await axios.get("/api/nasa");
-      console.log(results);
-
       setExplanation(results.data.explanation);
       setImage(results.data.url);
       setImageTitle(results.data.title);
+      setLoading(false);
     };
 
     getNasa();
   }, []);
 
-  //In progress with Material UI
+  /*TO DO: 
+  1. Create different background color (dark)
+  2. Create conditional rendering based on "loading" state
+  */
   return (
     <React.Fragment>
       <CssBaseline />
+
       <Container maxWidth="sm">
-        <h1>Nasa</h1>
-        <p>{explanation}</p>
-        <h3>{imageTitle}</h3>
-        <img src={image} alt="starry sky"></img>
+        <Typography variant="h3" className={classes.control}>
+          Nasa
+        </Typography>
+        <Typography variant="body1">{explanation}</Typography>
+        <Typography variant="h6" className={classes.control}>
+          {imageTitle}
+        </Typography>
       </Container>
+      <Box width="100%" className="nasa">
+        <img src={image} alt="starry sky"></img>
+      </Box>
     </React.Fragment>
   );
 }

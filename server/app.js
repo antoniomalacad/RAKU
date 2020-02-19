@@ -7,6 +7,7 @@ const db = require("knex")(require("../knexfile.js"));
 const quotes = require("./models/quotes.js")(db);
 const news = require("./models/news.js")(db);
 const cats = require("./models/cats.js")(db);
+const jokes = require("./models/jokes.js")(db);
 
 const app = express();
 app.use(express.json());
@@ -20,7 +21,7 @@ app.get("/api/quotes", async (req, res) => {
     .catch(e => console.log(e.message));
 });
 
-// happiness quotes
+// happiness news
 app.get("/api/news", async (req, res) => {
   news
     .get()
@@ -28,10 +29,18 @@ app.get("/api/news", async (req, res) => {
     .catch(e => console.log(e.message));
 });
 
-// cats quotes
+// happiness cats
 app.get("/api/cat-facts", async (req, res) => {
   cats
     .getFact()
+    .then(data => res.json(data))
+    .catch(e => console.log(e.message));
+});
+
+// happiness jokes
+app.get("/api/jokes", async (req, res) => {
+  jokes
+    .get()
     .then(data => res.json(data))
     .catch(e => console.log(e.message));
 });
@@ -44,7 +53,7 @@ app.get("/api/nasa", async (req, res) => {
     );
 
     res.send(nasa.data);
-    res.sendStatus(200);
+    res.status(200);
   } catch (error) {
     console.error(error);
   }
@@ -63,7 +72,7 @@ app.get("/api/weather", async (req, res) => {
       }
     );
     res.send(weather.data);
-    res.sendStatus(200);
+    res.status(200);
   } catch (error) {
     console.error(error);
   }
@@ -74,20 +83,10 @@ app.post("/api/horoscope", async (req, res) => {
   const input = req.body;
   try {
     const horoscopes = await axios.post(
-      "https://sameer-kumar-aztro-v1.p.rapidapi.com/",
-      {
-        headers: {
-          "x-rapidapi-host": "sameer-kumar-aztro-v1.p.rapidapi.com",
-          "x-rapidapi-key": process.env.API_KEY
-        },
-        params: {
-          sign: input
-        }
-      }
+      `https://aztro.sameerkumar.website/?sign=${input.horoscope}&day=today`
     );
-    console.log(horoscopes);
-    res.send(horoscopes);
-    res.sendStatus(200);
+    res.send(horoscopes.data);
+    res.status(200);
   } catch (error) {
     console.error(error);
   }
