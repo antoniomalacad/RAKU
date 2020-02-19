@@ -17,26 +17,32 @@ export default function Nasa() {
   const [explanation, setExplanation] = useState("");
   const [image, setImage] = useState("");
   const [imageTitle, setImageTitle] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getNasa = async () => {
       const results = await axios.get("/api/nasa");
-      console.log(results);
-
       setExplanation(results.data.explanation);
       setImage(results.data.url);
       setImageTitle(results.data.title);
+      setLoading(false);
     };
 
     getNasa();
   }, []);
 
-  //In progress with Material UI
+  /*TO DO: 
+  1. Create different background color (dark)
+  2. Create conditional rendering based on "loading" state
+  */
   return (
     <React.Fragment>
       <CssBaseline />
+
       <Container maxWidth="sm">
-        <Typography variant="h3">Nasa</Typography>
+        <Typography variant="h3" className={classes.control}>
+          Nasa
+        </Typography>
         <Typography variant="body1">{explanation}</Typography>
         <Typography variant="h6" className={classes.control}>
           {imageTitle}

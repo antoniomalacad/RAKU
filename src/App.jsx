@@ -25,8 +25,9 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1
   },
-  control: {
-    padding: theme.spacing(2)
+  quote: {
+    padding: theme.spacing(2),
+    maxHeight: 275
   }
 }));
 
@@ -52,7 +53,7 @@ function App() {
         alignItems="center"
         justify="center"
       >
-        <Grid item className={classes.control}>
+        <Grid item className={classes.quote}>
           <Quote />
         </Grid>
         <Weather className="weather" />
