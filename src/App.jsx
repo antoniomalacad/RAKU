@@ -39,7 +39,6 @@ function App() {
 
   return (
     <div className="parent">
-      <Horoscope />
       <div className={classes.root}>
         <AppBar position="static" className={classes.root}>
           <Toolbar className={classes.root}>
@@ -66,6 +65,8 @@ function App() {
         <Joke />
 
         <Cats />
+
+        <Horoscope />
 
         <Nasa className="nasa" />
       </Grid>

@@ -79,14 +79,12 @@ app.get("/api/weather", async (req, res) => {
 });
 
 // horoscopes
-app.post("/api/horoscope", async (req, res) => {
-  const input = req.body;
+app.get("/api/horoscope/:sign", async (req, res) => {
   try {
     const horoscopes = await axios.post(
-      `https://aztro.sameerkumar.website/?sign=${input.horoscope}&day=today`
+      `https://aztro.sameerkumar.website/?sign=${req.params.sign}&day=today`
     );
-    res.send(horoscopes.data);
-    res.status(200);
+    res.json(horoscopes.data);
   } catch (error) {
     console.error(error);
   }
