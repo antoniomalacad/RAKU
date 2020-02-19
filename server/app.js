@@ -31,7 +31,7 @@ app.get("/api/news", async (req, res) => {
 app.get("/api/nasa", async (req, res) => {
   try {
     const nasa = await axios.get(
-      `https://api.nasa.gov/planetary/apod?api_key=KoKS6MRHHZ5yflOqxhjGQpPiZSt0jgnnF0xuyqJa`
+      `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}`
     );
 
     res.send(nasa.data);
