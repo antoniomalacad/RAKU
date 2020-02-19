@@ -66,8 +66,6 @@ function App() {
         <Cats />
 
         <Nasa className="nasa" />
-
-        <News className="news" />
       </Grid>
     </div>
   );

@@ -58,10 +58,6 @@ export default function Quote() {
   }, [quote]);
   const toggleCollapse = () => setCollapsed(!collapsed);
 
-  /*
-  TODO: 
-  1. Update card width
-  */
   return (
     <Container>
       <Card
