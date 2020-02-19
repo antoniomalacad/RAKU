@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import ReactAnimatedWeather from "react-animated-weather";
 
 export default function Weather() {
   const [weather, setWeather] = useState({});
@@ -18,14 +19,18 @@ export default function Weather() {
     if (weather.data !== undefined) {
       const current = weather.data.currently;
       const today = weather.data.daily.data[0];
-      const tommorow = weather.data.daily.data[1];
+      const tomorrow = weather.data.daily.data[1];
       const datom = weather.data.daily.data[2];
-
       const renderCurrent = () => {
         return (
           <>
             <div className="weather-summary">{current.summary}</div>
-            <div className="weather-icon">{current.icon}</div>
+            <div className="weather-icon">
+              <ReactAnimatedWeather
+                icon={current.icon.replace(/-/g, "_").toUpperCase()}
+                size={96}
+              />
+            </div>
             <div className="weather-temp">
               {Math.round(current.temperature) + " °C"}
             </div>
@@ -41,7 +46,12 @@ export default function Weather() {
         return (
           <>
             <div className="weather-summary">{today.summary}</div>
-            <div className="weather-icon">{today.icon}</div>
+            <div className="weather-icon">
+              <ReactAnimatedWeather
+                icon={today.icon.replace(/-/g, "_").toUpperCase()}
+                size={80}
+              />
+            </div>
             <div className="weather-temp-high">
               {Math.round(today.temperatureHigh) + " °C"}
             </div>
@@ -59,16 +69,21 @@ export default function Weather() {
       const renderTomorrow = () => {
         return (
           <>
-            <div className="weather-summary">{tommorow.summary}</div>
-            <div className="weather-icon">{tommorow.icon}</div>
+            <div className="weather-summary">{tomorrow.summary}</div>
+            <div className="weather-icon">
+              <ReactAnimatedWeather
+                icon={tomorrow.icon.replace(/-/g, "_").toUpperCase()}
+                size={80}
+              />
+            </div>
             <div className="weather-temp-high">
-              {Math.round(tommorow.temperatureHigh) + " °C"}
+              {Math.round(tomorrow.temperatureHigh) + " °C"}
             </div>
             <div className="weather-temp-low">
-              {Math.round(tommorow.temperatureLow) + " °C"}
+              {Math.round(tomorrow.temperatureLow) + " °C"}
             </div>
             <div className="weather-precipChance">
-              {String(tommorow.precipProbability * 100) + " %"}
+              {String(tomorrow.precipProbability * 100) + " %"}
             </div>
             <br />
           </>
@@ -79,7 +94,12 @@ export default function Weather() {
         return (
           <>
             <div className="weather-summary">{datom.summary}</div>
-            <div className="weather-icon">{datom.icon}</div>
+            <div className="weather-icon">
+              <ReactAnimatedWeather
+                icon={datom.icon.replace(/-/g, "_").toUpperCase()}
+                size={80}
+              />
+            </div>
             <div className="weather-temp-high">
               {Math.round(datom.temperatureHigh) + " °C"}
             </div>
