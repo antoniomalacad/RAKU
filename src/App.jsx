@@ -10,27 +10,67 @@ import News from "./components/News";
 import Emails from "./components/Emails";
 import Cats from "./components/Cats";
 
+//Material-UI stuff
+import Grid from "@material-ui/core/Grid";
+import Toolbar from "@material-ui/core/Toolbar";
+import AppBar from "@material-ui/core/AppBar";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+    //background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)"
+    background:
+      "linear-gradient(90deg, rgba(255,23,124,1) 0%, rgba(100,171,255,1) 69%)"
+  },
+  title: {
+    flexGrow: 1
+  },
+  quote: {
+    padding: theme.spacing(2),
+    maxHeight: 275
+  },
+
+  weather: {
+    padding: theme.spacing(2)
+  }
+}));
+
 function App() {
+  const classes = useStyles();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <div className="parent">
-        <Cats />
-        <Quote />
-        <Weather />
-        <Nasa />
-        <News />
+      <div className={classes.root}>
+        <AppBar position="static" className={classes.root}>
+          <Toolbar className={classes.root}>
+            <Typography variant="h6" className={classes.title}>
+              RAKU
+            </Typography>
+          </Toolbar>
+        </AppBar>
       </div>
+      <header></header>
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justify="center"
+      >
+        <Grid item className={classes.quote}>
+          <Quote />
+        </Grid>
+
+        <Weather className={classes.weather} />
+
+        <Cats />
+
+        <Nasa className="nasa" />
+
+        <News className="news" />
+      </Grid>
     </div>
   );
 }
