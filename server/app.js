@@ -6,6 +6,7 @@ const db = require("knex")(require("../knexfile.js"));
 
 const quotes = require("./models/quotes.js")(db);
 const news = require("./models/news.js")(db);
+const cats = require("./models/cats.js")(db);
 
 const app = express();
 app.use(express.json());
@@ -23,6 +24,14 @@ app.get("/api/quotes", async (req, res) => {
 app.get("/api/news", async (req, res) => {
   news
     .get()
+    .then(data => res.json(data))
+    .catch(e => console.log(e.message));
+});
+
+// cats quotes
+app.get("/api/cat-facts", async (req, res) => {
+  cats
+    .getFact()
     .then(data => res.json(data))
     .catch(e => console.log(e.message));
 });
@@ -62,6 +71,7 @@ app.get("/api/weather", async (req, res) => {
 
 // horoscopes
 app.post("/api/horoscope", async (req, res) => {
+  const input = req.body;
   try {
     const horoscopes = await axios.post(
       "https://sameer-kumar-aztro-v1.p.rapidapi.com/",
@@ -71,10 +81,13 @@ app.post("/api/horoscope", async (req, res) => {
           "x-rapidapi-key": process.env.API_KEY
         },
         params: {
-          sign: req.body
+          sign: input
         }
       }
     );
+    console.log(horoscopes);
+    res.send(horoscopes);
+    res.sendStatus(200);
   } catch (error) {
     console.error(error);
   }
