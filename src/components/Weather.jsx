@@ -7,7 +7,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
+import { CssBaseline } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
@@ -214,16 +214,9 @@ export default function Weather() {
     }
   };
 
-  /* TO DO:
-  1. Apply Material-UI styles
-  2. Card vs paper?
-  3. Current = centered, alone on line
-  4. Today, Tomorrow, DATom lined up below Current
-  */
-
   return (
-    <Container>
-      <div className="weather">
+    <div className="weather">
+      <CssBaseline>
         <Typography variant="h3">Weather</Typography>
         <Grid
           container
@@ -234,7 +227,7 @@ export default function Weather() {
         >
           {renderWeather()}
         </Grid>
-      </div>
-    </Container>
+      </CssBaseline>
+    </div>
   );
 }

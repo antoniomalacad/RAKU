@@ -30,7 +30,8 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1
   },
   weather: {
-    padding: theme.spacing(2)
+    padding: theme.spacing(2),
+    justify: "center"
   }
 }));
 
@@ -66,9 +67,9 @@ function App() {
 
         <Cats />
 
-        <Nasa className="nasa" />
-
         <News className="news" />
+
+        <Nasa className="nasa" />
       </Grid>
     </div>
   );
