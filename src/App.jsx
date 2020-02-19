@@ -51,7 +51,6 @@ function App() {
             </Typography>
           </Toolbar>
         </AppBar>
-
       </div>
       <header></header>
       <Grid
@@ -66,6 +65,8 @@ function App() {
         </Grid>
 
         <Weather className={classes.weather} />
+
+        <Joke />
 
         <Cats />
 
