@@ -9,9 +9,7 @@ import Quote from "./components/Quote";
 import News from "./components/News";
 import Joke from "./components/Joke";
 import Emails from "./components/Emails";
-import Horoscope from "./components/Horoscope";
 import Cats from "./components/Cats";
-import Spotify from "./components/Spotify";
 
 //Material-UI stuff
 import Grid from "@material-ui/core/Grid";
@@ -40,24 +38,6 @@ function App() {
 
   return (
     <div className="App">
-<<<<<<< HEAD
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <div className="parent">
-        <Emails/>
-        <Quote />
-        <Weather />
-        <Nasa />
-        <News />
         <div className={classes.root}>
           <AppBar position="static" className={classes.root}>
             <Toolbar className={classes.root}>
@@ -78,87 +58,6 @@ function App() {
           <Grid item className={classes.quote}>
             <Quote />
           </Grid>
-||||||| merged common ancestors
-<<<<<<<<< Temporary merge branch 1
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <div className="parent">
-        <Emails/>
-        <Quote />
-        <Weather />
-        <Nasa />
-        <News />
-||||||||| merged common ancestors
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <div className="parent">
-        <Quote />
-        <Weather />
-        <Nasa />
-        <News />
-=========
-      <div className={classes.root}>
-        <AppBar position="static" className={classes.root}>
-          <Toolbar className={classes.root}>
-            <Typography variant="h6" className={classes.title}>
-              RAKU
-            </Typography>
-          </Toolbar>
-        </AppBar>
->>>>>>>>> Temporary merge branch 2
-      </div>
-      <header></header>
-      <Grid
-        container
-        spacing={0}
-        direction="column"
-        alignItems="center"
-        justify="center"
-      >
-        <Grid item className={classes.quote}>
-          <Quote />
-        </Grid>
-=======
-      <div className={classes.root}>
-        <AppBar position="static" className={classes.root}>
-          <Toolbar className={classes.root}>
-            <Typography variant="h6" className={classes.title}>
-              RAKU
-            </Typography>
-          </Toolbar>
-        </AppBar>
-      </div>
-      <header></header>
-      <Grid
-        container
-        spacing={0}
-        direction="column"
-        alignItems="center"
-        justify="center"
-      >
-        <Grid item className={classes.quote}>
-          <Quote />
-        </Grid>
-        <Spotify className={classes.spotify} />
->>>>>>> 5103cbcdb76d92b205dd41f1bb46a4284efff764
 
           <Weather className={classes.weather} />
 
@@ -166,19 +65,9 @@ function App() {
 
           <Cats />
 
-<<<<<<< HEAD
           <Nasa className="nasa" />
         </Grid>
       </div>
-||||||| merged common ancestors
-        <Nasa className="nasa" />
-      </Grid>
-=======
-        <Horoscope />
-
-        <Nasa className="nasa" />
-      </Grid>
->>>>>>> 5103cbcdb76d92b205dd41f1bb46a4284efff764
     </div>
   );
 }
