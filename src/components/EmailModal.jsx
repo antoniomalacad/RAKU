@@ -31,7 +31,7 @@ export default function EmailModal(props) {
         times: times
       }
     }).then(() => {
-      console.log("done!");
+      setIsLoading(false);
       localStorage.email = email;
       props.close();
     });
