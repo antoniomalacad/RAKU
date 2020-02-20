@@ -1,7 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    marginTop: 50
+  },
+  title: {
+    marginBottom: 30
+  }
+}));
 
 export default function Nasa() {
+  const classes = useStyles();
   const [catFact, setCatFact] = useState("");
   const [catFacts, setCatFacts] = useState([]);
   const [cacheBuster, setCacheBuster] = useState("");
@@ -25,9 +37,9 @@ export default function Nasa() {
   }, [catFacts]);
 
   return (
-    <div>
-      <h1>Cat</h1>
-      <p>{catFact}</p>
+    <div className={classes.root}>
+      <Typography variant="h4">Cat</Typography>
+      <Typography variant="body1">{catFact}</Typography>
       <img
         src={`https://cataas.com/cat?timestamp=${cacheBuster}`}
         alt={catFact}
