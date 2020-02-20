@@ -95,6 +95,28 @@ app.get("/api/weather", async (req, res) => {
   }
 });
 
+//spotify
+app.get("/api/spotify/token", (req, res) => {
+  axios
+    .post("https://accounts.spotify.com/api/token", null, {
+      params: {
+        grant_type: "client_credentials"
+      },
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      auth: {
+        username: process.env.CLIENT_ID,
+        password: process.env.CLIENT_SECRET
+      }
+    })
+    .then(tokenRes => {
+      return res.json(tokenRes.data);
+    })
+    .catch(e => console.log(e.message));
+});
+
 // horoscopes
 app.get("/api/horoscope/:sign", async (req, res) => {
   try {

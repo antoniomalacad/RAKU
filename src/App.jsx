@@ -11,6 +11,7 @@ import Joke from "./components/Joke";
 import EmailModal from "./components/EmailModal";
 import Horoscope from "./components/Horoscope";
 import Cats from "./components/Cats";
+import Spotify from "./components/Spotify";
 
 //Material-UI stuff
 import Grid from "@material-ui/core/Grid";
@@ -25,13 +26,14 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     //background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)"
     background:
-      "linear-gradient(90deg, rgba(255,23,124,1) 0%, rgba(100,171,255,1) 69%)"
+      "linear-gradient(45deg, rgba(255,23,124,1) 0%, rgba(100,171,255,1) 69%)"
   },
   title: {
     flexGrow: 1
   },
   weather: {
-    padding: theme.spacing(2)
+    padding: theme.spacing(2),
+    justify: "center"
   }
 }));
 
@@ -69,6 +71,7 @@ function App() {
         <Grid item className={classes.quote}>
           <Quote />
         </Grid>
+        <Spotify className={classes.spotify} />
 
         <Weather className={classes.weather} />
 
@@ -76,6 +79,7 @@ function App() {
 
         <Cats />
 
+        <News className="news" />
         <Horoscope />
 
         <Nasa className="nasa" />
