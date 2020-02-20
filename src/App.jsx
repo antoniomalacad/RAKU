@@ -73,11 +73,10 @@ function App() {
         </Grid>
         <Spotify className={classes.spotify} />
 
-        <Weather className={classes.weather} />
+          <Weather className={classes.weather} />
 
-        <Joke />
-
-        <Cats />
+          <Joke />
+          <Cats />
 
         <News className="news" />
         <Horoscope />
