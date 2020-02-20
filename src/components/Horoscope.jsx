@@ -40,6 +40,7 @@ const signEmojis = [
 ];
 export default function Horoscope() {
   const classes = useStyles();
+
   const [horoscopes, setHoroscopes] = useState([]);
   const [value, setValue] = useState(
     localStorage.selectedHoroscope ? Number(localStorage.selectedHoroscope) : 0
@@ -69,7 +70,9 @@ export default function Horoscope() {
   if (!horoscopes.length) return <div></div>;
   return (
     <Container className={classes.root} elevation={2}>
-      <Typography variant="h3">Your Horoscope</Typography>
+      <Typography variant="h3" className={classes.title}>
+        Your Horoscope
+      </Typography>
       <AppBar position="static" color="default">
         <Tabs
           value={value}
@@ -127,6 +130,10 @@ function a11yProps(index) {
 
 const useStyles = makeStyles(theme => ({
   root: {
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: theme.palette.background.paper,
+    marginTop: 50
+  },
+  title: {
+    marginBottom: 30
   }
 }));
