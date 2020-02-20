@@ -1,7 +1,20 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    marginTop: 50,
+    marginBottom: 30
+  },
+  title: {
+    marginBottom: 30
+  }
+}));
 
 export default function Spotify() {
+  const classes = useStyles();
   const [spotify, setSpotify] = useState("");
 
   useEffect(() => {
@@ -34,8 +47,10 @@ export default function Spotify() {
   return (
     <>
       {spotify && (
-        <div className="spotify">
-          <h1>THE MOOD SONGS</h1>
+        <div className={classes.root}>
+          <Typography variant="h3" className={classes.title}>
+            Music
+          </Typography>
           <div className="weatspotifyher-data">
             <iframe
               src={`https://open.spotify.com/embed/playlist/${spotify}`}
