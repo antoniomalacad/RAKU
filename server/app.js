@@ -6,7 +6,12 @@ const db = require("knex")(require("../knexfile.js"));
 
 const quotes = require("./models/quotes.js")(db);
 const news = require("./models/news.js")(db);
+
 const emails = require("./models/emails.js")(db);
+
+const cats = require("./models/cats.js")(db);
+const jokes = require("./models/jokes.js")(db);
+
 
 const app = express();
 app.use(express.json());
@@ -20,13 +25,14 @@ app.get("/api/quotes", async (req, res) => {
     .catch(e => console.log(e.message));
 });
 
-// happiness quotes
+// happiness news
 app.get("/api/news", async (req, res) => {
   news
     .get()
     .then(data => res.json(data))
     .catch(e => console.log(e.message));
 });
+
 
 app.put("/api/email-times", async (req, res) => {
   emails
@@ -41,6 +47,21 @@ app.get("/api/email-times/:email", async (req, res) => {
     .then(data => {
       res.json(data)
     })
+
+// happiness cats
+app.get("/api/cat-facts", async (req, res) => {
+  cats
+    .getFact()
+    .then(data => res.json(data))
+    .catch(e => console.log(e.message));
+});
+
+// happiness jokes
+app.get("/api/jokes", async (req, res) => {
+  jokes
+    .get()
+    .then(data => res.json(data))
+
     .catch(e => console.log(e.message));
 });
 
@@ -53,6 +74,7 @@ app.get("/api/nasa", async (req, res) => {
 
     res.status(200);
     res.send(nasa.data);
+
   } catch (error) {
     console.error(error);
   }
