@@ -11,6 +11,7 @@ import Joke from "./components/Joke";
 import Emails from "./components/Emails";
 import Horoscope from "./components/Horoscope";
 import Cats from "./components/Cats";
+import Spotify from "./components/Spotify";
 
 //Material-UI stuff
 import Grid from "@material-ui/core/Grid";
@@ -61,6 +62,7 @@ function App() {
         <Grid item className={classes.quote}>
           <Quote />
         </Grid>
+        <Spotify className={classes.spotify} />
 
         <Weather className={classes.weather} />
 
