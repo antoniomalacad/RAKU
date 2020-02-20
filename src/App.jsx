@@ -9,6 +9,7 @@ import Quote from "./components/Quote";
 import News from "./components/News";
 import Joke from "./components/Joke";
 import Emails from "./components/Emails";
+import Horoscope from "./components/Horoscope";
 import Cats from "./components/Cats";
 
 //Material-UI stuff
@@ -40,7 +41,6 @@ function App() {
 
   return (
     <div className="App">
-
       <div className={classes.root}>
         <AppBar position="static" className={classes.root}>
           <Toolbar className={classes.root}>
@@ -49,7 +49,6 @@ function App() {
             </Typography>
           </Toolbar>
         </AppBar>
-
       </div>
       <header></header>
       <Grid
@@ -70,6 +69,7 @@ function App() {
         <Cats />
 
         <News className="news" />
+        <Horoscope />
 
         <Nasa className="nasa" />
       </Grid>

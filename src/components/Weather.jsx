@@ -35,7 +35,6 @@ export default function Weather() {
     const handleWeather = async () => {
       const result = await axios.get("/api/weather");
       setWeather(result);
-      console.log(result);
     };
 
     handleWeather();
