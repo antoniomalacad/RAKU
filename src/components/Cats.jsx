@@ -10,13 +10,60 @@ import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    marginTop: 50
+    marginTop: 300,
+    marginBottom: 300,
+    padding: 0,
+    maxWidth: "unset !important",
+    width: "100%",
+    position: "relative",
+    "&::before": {
+      content: `''`,
+      display: "block",
+      position: "absolute",
+      top: -300,
+      left: 0,
+      width: "100vw",
+      height: 300,
+      background: "linear-gradient(10deg, #fff, #fff 49.9%, transparent 50%)"
+    },
+    "&::after": {
+      content: `''`,
+      display: "block",
+      position: "absolute",
+      bottom: -300,
+      left: 0,
+      width: "100vw",
+      height: 300,
+      background:
+        "linear-gradient(10deg, transparent, transparent 49.9%, #fff 50%)"
+    }
   },
-  title: {
-    marginBottom: 30
+  wrapper: {
+    backgroundColor: "#fff",
+    display: "flex",
+    width: "100%",
+    padding: "0 10vw"
   },
-  media: {
-    minHeight: 200
+  text: {
+    flex: 1,
+    marginBottom: 30,
+    display: "flex",
+    textAlign: "left",
+    alignItems: "center",
+    paddingRight: "10vw"
+  },
+  imageWrapper: {
+    borderRadius: "100%",
+    overflow: "hidden",
+    width: 500,
+    height: 500,
+    minWidth: 500,
+    minHeight: 500,
+    backgroundSize: "cover"
+  },
+  image: {
+    width: "100%",
+    height: "auto"
   }
 }));
 
@@ -45,19 +92,20 @@ export default function Nasa() {
   }, [catFacts]);
 
   return (
-    <Container style={{ marginTop: 20 }}>
-      <Paper elevation={2}>
-        <CardContent style={{ padding: 20 }}>
+    <Container className={classes.root}>
+      <div className={classes.wrapper}>
+        <div className={classes.text}>
           <Typography variant="h5" component="h2">
             {catFact}
           </Typography>
-        </CardContent>
-        <CardMedia
-          className={classes.media}
-          image={`https://cataas.com/cat?timestamp=${cacheBuster}`}
-          title={catFact}
-        />
-      </Paper>
+        </div>
+        <div
+          className={classes.imageWrapper}
+          style={{
+            backgroundImage: `url(https://cataas.com/cat?timestamp=${cacheBuster})`
+          }}
+        ></div>
+      </div>
     </Container>
   );
 }

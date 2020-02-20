@@ -63,29 +63,46 @@ export default function Weather() {
       const renderCurrent = () => {
         return (
           <Paper elevation={2} className={classes.largeBlock}>
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: 1, display: "flex", alignItems: "center" }}>
               <Typography
                 className={classes.title}
                 color="textSecondary"
                 gutterBottom
+                style={{ flex: 1 }}
               >
-                Currently
-              </Typography>
-              <Typography variant="h5" component="h2">
-                {current.summary}
-              </Typography>
-              <div className="weather-icon">
                 <ReactAnimatedWeather
                   icon={current.icon.replace(/-/g, "_").toUpperCase()}
-                  size={96}
+                  size={200}
                 />
+              </Typography>
+              <div style={{ flex: 2 }}>
+                <Typography
+                  className={classes.title}
+                  color="textSecondary"
+                  gutterBottom
+                >
+                  Current
+                </Typography>
+                <Typography variant="h5" component="h2">
+                  {current.summary}
+                </Typography>
+                <Typography
+                  variant="body1"
+                  component="p"
+                  color="textSecondary"
+                  style={{ whiteSpace: "nowrap" }}
+                >
+                  {Math.round(current.temperature) + " °C"}
+                </Typography>
+                <Typography
+                  variant="body1"
+                  component="p"
+                  color="textSecondary"
+                  style={{ whiteSpace: "nowrap" }}
+                >
+                  {String(current.precipProbability * 100) + " %"}
+                </Typography>
               </div>
-              <Typography variant="body1" component="p" color="textSecondary">
-                {Math.round(current.temperature) + " °C"}
-              </Typography>
-              <Typography variant="body1" component="p" color="textSecondary">
-                {String(current.precipProbability * 100) + " %"}
-              </Typography>
             </div>
           </Paper>
         );
@@ -98,13 +115,6 @@ export default function Weather() {
             className={classes.smallBlock}
             style={title == "Day After" ? { marginBottom: 0 } : {}}
           >
-            <Typography
-              className={[classes.title, classes.smallBlockElement].join(" ")}
-              color="textSecondary"
-              gutterBottom
-            >
-              {title}
-            </Typography>
             <div className={classes.smallBlockElement}>
               <ReactAnimatedWeather
                 icon={obj.icon.replace(/-/g, "_").toUpperCase()}
@@ -112,16 +122,43 @@ export default function Weather() {
               />
             </div>
             <div className={classes.smallBlockElement}>
-              <Typography variant="body1" component="p" color="textSecondary">
+              <Typography
+                className={classes.title}
+                color="textSecondary"
+                gutterBottom
+              >
+                {title}
+              </Typography>
+              <Typography variant="h5" component="h2">
                 {obj.summary}
               </Typography>
-              <Typography variant="body1" component="p" color="textSecondary">
+            </div>
+            <div
+              className={classes.smallBlockElement}
+              style={{ textAlign: "right" }}
+            >
+              <Typography
+                variant="body1"
+                component="p"
+                color="textSecondary"
+                style={{ whiteSpace: "nowrap" }}
+              >
                 {Math.round(obj.temperatureHigh) + " °C"}
               </Typography>
-              <Typography variant="body1" component="p" color="textSecondary">
+              <Typography
+                variant="body1"
+                component="p"
+                color="textSecondary"
+                style={{ whiteSpace: "nowrap" }}
+              >
                 {Math.round(obj.temperatureLow) + " °C"}
               </Typography>
-              <Typography variant="body1" component="p" color="textSecondary">
+              <Typography
+                variant="body1"
+                component="p"
+                color="textSecondary"
+                style={{ whiteSpace: "nowrap" }}
+              >
                 {String(obj.precipProbability * 100) + " %"}
               </Typography>
             </div>
