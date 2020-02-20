@@ -13,7 +13,8 @@ const useStyles = makeStyles({
   root: {
     maxWidth: 275,
     minWidth: 275,
-    maxHeight: 275
+    maxHeight: 275,
+    minHeight: 275
   },
   title: {
     fontSize: 14
