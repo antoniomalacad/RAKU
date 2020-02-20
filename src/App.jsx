@@ -8,7 +8,7 @@ import Weather from "./components/Weather";
 import Quote from "./components/Quote";
 import News from "./components/News";
 import Joke from "./components/Joke";
-import Emails from "./components/Emails";
+import EmailModal from "./components/EmailModal";
 import Horoscope from "./components/Horoscope";
 import Cats from "./components/Cats";
 
@@ -18,6 +18,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import MailIcon from "@material-ui/icons/Mail";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -36,6 +37,7 @@ const useStyles = makeStyles(theme => ({
 
 function App() {
   const classes = useStyles();
+  const [emailModalIsOpen, setEmailModalIsOpen] = useState(false);
 
   return (
     <div className="App">
@@ -45,6 +47,14 @@ function App() {
             <Typography variant="h6" className={classes.title}>
               RAKU
             </Typography>
+            <span
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                setEmailModalIsOpen(!emailModalIsOpen);
+              }}
+            >
+              <MailIcon />
+            </span>
           </Toolbar>
         </AppBar>
       </div>
@@ -70,6 +80,12 @@ function App() {
 
         <Nasa className="nasa" />
       </Grid>
+      <EmailModal
+        open={emailModalIsOpen}
+        close={() => {
+          setEmailModalIsOpen(false);
+        }}
+      />
     </div>
   );
 }
