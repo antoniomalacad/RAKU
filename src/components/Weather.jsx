@@ -74,9 +74,7 @@ export default function Weather() {
                 <Typography variant="body1" component="p" color="textSecondary">
                   {String(current.precipProbability * 100) + " %"}
                 </Typography>
-                <Typography variant="body1" component="p" color="textSecondary">
-                  {String(current.humidity * 100) + "%"}
-                </Typography>
+
                 <br />
               </CardContent>
             </Card>
