@@ -8,9 +8,9 @@ import Weather from "./components/Weather";
 import Quote from "./components/Quote";
 import News from "./components/News";
 import Joke from "./components/Joke";
-import Emails from "./components/Emails";
-import Cats from "./components/Cats";
+import EmailModal from "./components/EmailModal";
 import Horoscope from "./components/Horoscope";
+import Cats from "./components/Cats";
 import Spotify from "./components/Spotify";
 
 //Material-UI stuff
@@ -19,7 +19,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import Box from "@material-ui/core/Box";
+import MailIcon from "@material-ui/icons/Mail";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -39,30 +39,39 @@ const useStyles = makeStyles(theme => ({
 
 function App() {
   const classes = useStyles();
+  const [emailModalIsOpen, setEmailModalIsOpen] = useState(false);
 
   return (
     <div className="App">
-        <div className={classes.root}>
-          <AppBar position="static" className={classes.root}>
-            <Toolbar className={classes.root}>
-              <Typography variant="h6" className={classes.title}>
-                RAKU
-              </Typography>
-            </Toolbar>
-          </AppBar>
-        </div>
-        <header></header>
-        <Grid
-          container
-          spacing={0}
-          direction="column"
-          alignItems="center"
-          justify="center"
-        >
-          <Grid item className={classes.quote}>
-            <Quote />
-          </Grid>
-          <Spotify className={classes.spotify}/>
+      <div className={classes.root}>
+        <AppBar position="static" className={classes.root}>
+          <Toolbar className={classes.root}>
+            <Typography variant="h6" className={classes.title}>
+              RAKU
+            </Typography>
+            <span
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                setEmailModalIsOpen(!emailModalIsOpen);
+              }}
+            >
+              <MailIcon />
+            </span>
+          </Toolbar>
+        </AppBar>
+      </div>
+      <header></header>
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justify="center"
+      >
+        <Grid item className={classes.quote}>
+          <Quote />
+        </Grid>
+        <Spotify className={classes.spotify} />
 
           <Weather className={classes.weather} />
 
@@ -72,10 +81,15 @@ function App() {
         <News className="news" />
         <Horoscope />
 
-          <Nasa className="nasa" />
-        </Grid>
-      </div>
-
+        <Nasa className="nasa" />
+      </Grid>
+      <EmailModal
+        open={emailModalIsOpen}
+        close={() => {
+          setEmailModalIsOpen(false);
+        }}
+      />
+    </div>
   );
 }
 
