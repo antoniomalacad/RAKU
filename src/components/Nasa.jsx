@@ -114,7 +114,7 @@ export default function Nasa() {
       {stars}
       <Container maxWidth="sm">
         <Typography variant="h3" className={classes.control}>
-          Nasa
+          NASA
         </Typography>
         <Typography variant="body1">{explanation}</Typography>
         <Typography variant="h6" className={classes.control}>
