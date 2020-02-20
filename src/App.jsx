@@ -38,7 +38,7 @@ function App() {
   const classes = useStyles();
 
   return (
-    <div className="parent">
+    <div className="App">
       <div className={classes.root}>
         <AppBar position="static" className={classes.root}>
           <Toolbar className={classes.root}>
