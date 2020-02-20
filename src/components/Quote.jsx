@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import quotes from "../utils/quotes";
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import Card from "@material-ui/core/Card";
+import Paper from "@material-ui/core/Paper";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    maxWidth: 275,
     minWidth: 275,
     margin: theme.spacing(2)
   },
@@ -59,41 +57,38 @@ export default function Quote() {
   const toggleCollapse = () => setCollapsed(!collapsed);
 
   return (
-    <Container>
-      <Card
-        className={classes.root}
-        onClick={toggleCollapse}
-        style={collapsible ? { cursor: "pointer" } : {}}
-      >
-        <CardContent>
-          <div>
-            <Typography
-              className={classes.title}
-              color="textSecondary"
-              gutterBottom
-            >
-              Quote of the Day
-            </Typography>
-            <Typography
-              variant="h5"
-              component="h2"
-              className={
-                collapsed && collapsible
-                  ? classes.collapsedQuote
-                  : classes.expandedQuote
-              }
-            >
-              {collapsible && collapsed && (
-                <div className={classes.collapsedOverlay} />
-              )}
-              <div id="quote">{quote.quote}</div>
-            </Typography>
-            <Typography variant="body2" component="p" color="textSecondary">
-              - {quote.author}
-            </Typography>
-          </div>
-        </CardContent>
-      </Card>
-    </Container>
+    <Paper
+      elevation={2}
+      className={classes.root}
+      onClick={toggleCollapse}
+      style={collapsible ? { cursor: "pointer" } : {}}
+    >
+      <CardContent>
+        <Typography
+          className={classes.title}
+          color="textSecondary"
+          gutterBottom
+        >
+          Quote of the Day
+        </Typography>
+        <Typography
+          variant="h5"
+          component="h2"
+          className={
+            collapsed && collapsible
+              ? classes.collapsedQuote
+              : classes.expandedQuote
+          }
+        >
+          {collapsible && collapsed && (
+            <div className={classes.collapsedOverlay} />
+          )}
+          <div id="quote">{quote.quote}</div>
+        </Typography>
+        <Typography variant="body2" component="p" color="textSecondary">
+          - {quote.author}
+        </Typography>
+      </CardContent>
+    </Paper>
   );
 }

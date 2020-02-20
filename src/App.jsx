@@ -1,7 +1,8 @@
 import React from "react";
 import logo from "./logo.svg";
 import { useEffect, useState } from "react";
-import "./App.css";
+
+import "./App.scss";
 import quotes from "./utils/quotes";
 import Nasa from "./components/Nasa";
 import Weather from "./components/Weather";
@@ -14,7 +15,7 @@ import Cats from "./components/Cats";
 import Spotify from "./components/Spotify";
 
 //Material-UI stuff
-import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
 import Toolbar from "@material-ui/core/Toolbar";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
@@ -60,29 +61,20 @@ function App() {
           </Toolbar>
         </AppBar>
       </div>
-      <header></header>
-      <Grid
-        container
-        spacing={0}
-        direction="column"
-        alignItems="center"
-        justify="center"
-      >
-        <Grid item className={classes.quote}>
-          <Quote />
-        </Grid>
+      <Container className="App-content">
+        <Quote />
         <Spotify className={classes.spotify} />
 
-          <Weather className={classes.weather} />
+        <Weather className={classes.weather} />
 
-          <Joke />
-          <Cats />
+        <Joke />
+        <Cats />
 
         <News className="news" />
         <Horoscope />
 
         <Nasa className="nasa" />
-      </Grid>
+      </Container>
       <EmailModal
         open={emailModalIsOpen}
         close={() => {
