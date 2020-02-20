@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
-import GridList from "@material-ui/core/GridList";
+import Container from "@material-ui/core/Container";
+import Paper from "@material-ui/core/Paper";
 
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
@@ -21,20 +22,22 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center"
   },
   content: {
-    maxHeight: 300,
-    overflow: "hidden"
+    height: 150,
+    overflow: "hidden",
+    flex: 1,
+    textAlign: "left"
+  },
+  title: {
+    fontSize: "1.5rem"
+  },
+  description: {
+    fontSize: "1.2rem"
+  },
+  link: {
+    textDecoration: "none",
+    color: "#ff177c"
   }
 }));
-
-/*
-This is the images I cut out
-<CardMedia className={classes.media}>
-<a href={article.url}>
-  {article.image_url && <img src={article.image_url} />}
-</a>
-</CardMedia>
-
-*/
 
 export default function News() {
   const classes = useStyles();
@@ -47,41 +50,44 @@ export default function News() {
   }, []);
 
   return (
-    <div>
-      <Typography variant="h3">News</Typography>
-      <Grid
-        container
-        display="flex"
-        flexDirection="row"
-        spacing={1}
-        justifyContent="center"
-      >
-        {news.map(article => (
-          <Grid item xs={"auto"} className={classes.root}>
-            <Card className={classes.root}>
-              <div
-                style={{
-                  width: "100%",
-                  height: 100,
-                  background:
-                    "linear-gradient(45deg, rgba(255,23,124,1) 0%, rgba(100,171,255,1) 69%)"
-                }}
-              ></div>
-              <CardContent className={classes.content}>
-                <a href={article.url}>
-                  <Typography variant="body1">{article.title}</Typography>
-                </a>
-                <Typography color="textSecondary" gutterBottom>
-                  <div>happiness: {article.happiness}</div>
-                </Typography>
-                <Typography variant="body2" component="p">
-                  {article.description}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-    </div>
+    <Container style={{ marginTop: 20 }}>
+      <Typography variant="h5" component="h2" style={{ color: "#fff" }}>
+        Today's News
+      </Typography>
+      {news.map(article => (
+        <Paper
+          elevation={2}
+          style={{
+            display: "flex",
+            marginTop: 10,
+            overflow: "hidden",
+            maxHeight: 150
+          }}
+        >
+          <CardMedia
+            image={article.image_url}
+            title={article.title}
+            style={{ width: 100 }}
+          />
+          <CardContent className={classes.content}>
+            <a href={article.url} className={classes.link}>
+              <Typography variant="body1" className={classes.title}>
+                {article.title}
+              </Typography>
+            </a>
+            <Typography color="textSecondary" gutterBottom>
+              <div>happiness: {article.happiness}</div>
+            </Typography>
+            <Typography
+              variant="body2"
+              component="p"
+              className={classes.description}
+            >
+              {article.description}
+            </Typography>
+          </CardContent>
+        </Paper>
+      ))}
+    </Container>
   );
 }

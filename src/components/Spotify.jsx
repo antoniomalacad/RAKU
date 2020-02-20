@@ -1,20 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    marginTop: 50,
-    marginBottom: 30
-  },
-  title: {
-    marginBottom: 30
-  }
-}));
+import Container from "@material-ui/core/Container";
 
 export default function Spotify() {
-  const classes = useStyles();
   const [spotify, setSpotify] = useState("");
 
   useEffect(() => {
@@ -44,25 +33,20 @@ export default function Spotify() {
       });
   }, []);
 
+  if (!spotify) return <div></div>;
+
   return (
-    <>
-      {spotify && (
-        <div className={classes.root}>
-          <Typography variant="h3" className={classes.title}>
-            Music
-          </Typography>
-          <div className="weatspotifyher-data">
-            <iframe
-              src={`https://open.spotify.com/embed/playlist/${spotify}`}
-              width="300"
-              height="100"
-              frameborder="0"
-              allowtransparency="true"
-              allow="encrypted-media"
-            ></iframe>
-          </div>
-        </div>
-      )}
-    </>
+    <Container>
+      <div className="weatspotifyher-data">
+        <iframe
+          src={`https://open.spotify.com/embed/playlist/${spotify}`}
+          width="300"
+          height="80"
+          frameborder="0"
+          allowtransparency="true"
+          allow="encrypted-media"
+        ></iframe>
+      </div>
+    </Container>
   );
 }
