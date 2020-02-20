@@ -56,7 +56,7 @@ API_KEY=[your API_KEY]
 yarn start
 ```
 
-#### 6. Build the front end:
+#### 7. Build the front end:
 
 • Default location is: http://localhost:3000
 
