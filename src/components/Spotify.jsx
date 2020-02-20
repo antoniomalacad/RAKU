@@ -13,6 +13,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Spotify() {
+  const classes = useStyles();
   const [spotify, setSpotify] = useState("");
 
   useEffect(() => {
@@ -45,8 +46,10 @@ export default function Spotify() {
   return (
     <>
       {spotify && (
-        <div className="spotify">
-          <Typography variant="h3">Music</Typography>
+        <div className={classes.root}>
+          <Typography variant="h3" className={classes.title}>
+            Music
+          </Typography>
           <div className="weatspotifyher-data">
             <iframe
               src={`https://open.spotify.com/embed/playlist/${spotify}`}
