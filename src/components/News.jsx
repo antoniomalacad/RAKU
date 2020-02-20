@@ -10,7 +10,6 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 
 import Typography from "@material-ui/core/Typography";
-//Why not???
 
 const useStyles = makeStyles(theme => ({
   root: {
