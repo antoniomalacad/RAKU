@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -57,38 +58,40 @@ export default function Quote() {
   const toggleCollapse = () => setCollapsed(!collapsed);
 
   return (
-    <Paper
-      elevation={2}
-      className={classes.root}
-      onClick={toggleCollapse}
-      style={collapsible ? { cursor: "pointer" } : {}}
-    >
-      <CardContent>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-        >
-          Quote of the Day
-        </Typography>
-        <Typography
-          variant="h5"
-          component="h2"
-          className={
-            collapsed && collapsible
-              ? classes.collapsedQuote
-              : classes.expandedQuote
-          }
-        >
-          {collapsible && collapsed && (
-            <div className={classes.collapsedOverlay} />
-          )}
-          <div id="quote">{quote.quote}</div>
-        </Typography>
-        <Typography variant="body2" component="p" color="textSecondary">
-          - {quote.author}
-        </Typography>
-      </CardContent>
-    </Paper>
+    <Container>
+      <Paper
+        elevation={2}
+        className={classes.root}
+        onClick={toggleCollapse}
+        style={collapsible ? { cursor: "pointer" } : {}}
+      >
+        <CardContent>
+          <Typography
+            className={classes.title}
+            color="textSecondary"
+            gutterBottom
+          >
+            Quote of the Day
+          </Typography>
+          <Typography
+            variant="h5"
+            component="h2"
+            className={
+              collapsed && collapsible
+                ? classes.collapsedQuote
+                : classes.expandedQuote
+            }
+          >
+            {collapsible && collapsed && (
+              <div className={classes.collapsedOverlay} />
+            )}
+            <div id="quote">{quote.quote}</div>
+          </Typography>
+          <Typography variant="body2" component="p" color="textSecondary">
+            - {quote.author}
+          </Typography>
+        </CardContent>
+      </Paper>
+    </Container>
   );
 }

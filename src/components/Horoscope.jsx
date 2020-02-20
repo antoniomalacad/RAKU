@@ -9,6 +9,8 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
+import Paper from "@material-ui/core/Paper";
+import CardContent from "@material-ui/core/CardContent";
 
 const signs = [
   "aries",
@@ -69,31 +71,40 @@ export default function Horoscope() {
 
   if (!horoscopes.length) return <div></div>;
   return (
-    <Container className={classes.root} elevation={2}>
-      <Typography variant="h3" className={classes.title}>
-        Your Horoscope
-      </Typography>
-      <AppBar position="static" color="default">
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          variant="fullWidth"
-          aria-label="full width tabs"
-        >
-          {signEmojis.map((sign, i) => (
-            <Tab label={sign} {...a11yProps(i)} style={{ minWidth: "auto" }} />
-          ))}
-        </Tabs>
-      </AppBar>
-      <SwipeableViews axis="x" index={value} onChangeIndex={handleChangeIndex}>
-        {horoscopes.map((horoscope, i) => (
-          <TabPanel value={value} index={i} dir="x">
-            {horoscope.description}
-          </TabPanel>
-        ))}
-      </SwipeableViews>
+    <Container style={{ marginTop: 20 }}>
+      <Paper elevation={2}>
+        <CardContent>
+          <AppBar position="static" color="default">
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              indicatorColor="primary"
+              textColor="primary"
+              variant="fullWidth"
+              aria-label="full width tabs"
+            >
+              {signEmojis.map((sign, i) => (
+                <Tab
+                  label={sign}
+                  {...a11yProps(i)}
+                  style={{ minWidth: "auto" }}
+                />
+              ))}
+            </Tabs>
+          </AppBar>
+          <SwipeableViews
+            axis="x"
+            index={value}
+            onChangeIndex={handleChangeIndex}
+          >
+            {horoscopes.map((horoscope, i) => (
+              <TabPanel value={value} index={i} dir="x">
+                {horoscope.description}
+              </TabPanel>
+            ))}
+          </SwipeableViews>
+        </CardContent>
+      </Paper>
     </Container>
   );
 }

@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Box from "@material-ui/core/Box";
+import Paper from "@material-ui/core/Paper";
+import Container from "@material-ui/core/Container";
+import CardContent from "@material-ui/core/CardContent";
 import { Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
-  root: {
+  button: {
     background:
       "linear-gradient(45deg, rgba(255,23,124,1) 0%, rgba(100,171,255,1) 69%)",
     border: 0,
@@ -36,7 +39,7 @@ export default function Joke() {
     <div>{joke.punchline}</div>
   ) : (
     <Box>
-      <Button className={classes.root} onClick={() => setShowPunchline(true)}>
+      <Button className={classes.button} onClick={() => setShowPunchline(true)}>
         Show Punchline
       </Button>
     </Box>
@@ -44,13 +47,18 @@ export default function Joke() {
 
   return (
     joke && (
-      <Box marginTop={10}>
-        <Typography variant="h4">Joke</Typography>
-        <Typography variant="body1" component="p">
-          {joke.setup}
-        </Typography>
-        <Typography variant="body1">{punchline}</Typography>
-      </Box>
+      <Container style={{ marginTop: 20 }}>
+        <Paper elevation={2} style={{ padding: 20 }}>
+          <CardContent>
+            <Typography variant="h5" component="h2">
+              {joke.setup}
+            </Typography>
+            <Typography variant="h5" component="h2">
+              {punchline}
+            </Typography>
+          </CardContent>
+        </Paper>
+      </Container>
     )
   );
 }

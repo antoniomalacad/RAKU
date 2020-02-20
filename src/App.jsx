@@ -23,15 +23,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import MailIcon from "@material-ui/icons/Mail";
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-    //background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)"
-    background:
-      "linear-gradient(45deg, rgba(255,23,124,1) 0%, rgba(100,171,255,1) 69%)"
-  },
-  title: {
-    flexGrow: 1
-  },
   weather: {
     padding: theme.spacing(2),
     justify: "center"
@@ -43,11 +34,15 @@ function App() {
   const [emailModalIsOpen, setEmailModalIsOpen] = useState(false);
 
   return (
-    <div className="App">
-      <div className={classes.root}>
-        <AppBar position="static" className={classes.root}>
-          <Toolbar className={classes.root}>
-            <Typography variant="h6" className={classes.title}>
+    <div className="App horizontal-gradient">
+      <div>
+        <AppBar position="static" style={{ backgroundColor: "#000" }}>
+          <Toolbar>
+            <Typography
+              variant="h6"
+              className={classes.title}
+              style={{ flexGrow: 1 }}
+            >
               RAKU
             </Typography>
             <span
@@ -69,9 +64,9 @@ function App() {
 
         <Joke />
         <Cats />
+        <Horoscope />
 
         <News className="news" />
-        <Horoscope />
 
         <Nasa className="nasa" />
       </Container>

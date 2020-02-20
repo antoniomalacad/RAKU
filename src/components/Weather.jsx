@@ -7,25 +7,38 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
+import Container from "@material-ui/core/Container";
 import { CssBaseline } from "@material-ui/core";
 
 const useStyles = makeStyles({
-  root: {
-    maxWidth: 275,
-    minWidth: 275,
-    maxHeight: 275,
-    minHeight: 275
-  },
   title: {
     fontSize: 14
   },
-  pos: {
-    marginBottom: 12
+  gridColumn: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "stretch"
   },
-  grid: {
-    flexGrow: 1
+  largeBlock: {
+    flex: 1,
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    padding: 20
   },
-  card: {}
+  smallBlock: {
+    flex: 1,
+    width: "100%",
+    marginBottom: 20,
+    padding: 20,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-around"
+  },
+  smallBlockElement: {
+    padding: 10
+  }
 });
 
 export default function Weather() {
@@ -49,183 +62,139 @@ export default function Weather() {
       const datom = weather.data.daily.data[2];
       const renderCurrent = () => {
         return (
-          <>
-            <Card className={classes.root}>
-              <CardContent>
+          <Paper elevation={2} className={classes.largeBlock}>
+            <div style={{ flex: 1, display: "flex", alignItems: "center" }}>
+              <Typography
+                className={classes.title}
+                color="textSecondary"
+                gutterBottom
+                style={{ flex: 1 }}
+              >
+                <ReactAnimatedWeather
+                  icon={current.icon.replace(/-/g, "_").toUpperCase()}
+                  size={200}
+                />
+              </Typography>
+              <div style={{ flex: 2 }}>
                 <Typography
                   className={classes.title}
                   color="textSecondary"
                   gutterBottom
                 >
-                  Currently
+                  Current
                 </Typography>
                 <Typography variant="h5" component="h2">
                   {current.summary}
                 </Typography>
-                <div className="weather-icon">
-                  <ReactAnimatedWeather
-                    icon={current.icon.replace(/-/g, "_").toUpperCase()}
-                    size={96}
-                  />
-                </div>
-                <Typography variant="body1" component="p" color="textSecondary">
+                <Typography
+                  variant="body1"
+                  component="p"
+                  color="textSecondary"
+                  style={{ whiteSpace: "nowrap" }}
+                >
                   {Math.round(current.temperature) + " °C"}
                 </Typography>
-                <Typography variant="body1" component="p" color="textSecondary">
+                <Typography
+                  variant="body1"
+                  component="p"
+                  color="textSecondary"
+                  style={{ whiteSpace: "nowrap" }}
+                >
                   {String(current.precipProbability * 100) + " %"}
                 </Typography>
-
-                <br />
-              </CardContent>
-            </Card>
-          </>
+              </div>
+            </div>
+          </Paper>
         );
       };
 
-      const renderToday = () => {
+      const renderSmall = (title, obj) => {
         return (
-          <>
-            <Card className={classes.root}>
-              <CardContent>
-                <Typography
-                  className={classes.title}
-                  color="textSecondary"
-                  gutterBottom
-                >
-                  Today
-                </Typography>
-                <Typography variant="h5" component="h2">
-                  {today.summary}
-                </Typography>
-                <div className="weather-icon">
-                  <ReactAnimatedWeather
-                    icon={today.icon.replace(/-/g, "_").toUpperCase()}
-                    size={80}
-                  />
-                </div>
-                <Typography variant="body1" component="p" color="textSecondary">
-                  {Math.round(today.temperatureHigh) + " °C"}
-                </Typography>
-                <Typography variant="body1" component="p" color="textSecondary">
-                  {Math.round(today.temperatureLow) + " °C"}
-                </Typography>
-                <Typography variant="body1" component="p" color="textSecondary">
-                  {String(today.precipProbability * 100) + " %"}
-                </Typography>
-                <br />
-              </CardContent>
-            </Card>
-          </>
-        );
-      };
-
-      const renderTomorrow = () => {
-        return (
-          <>
-            <Card className={classes.root}>
-              <CardContent>
-                <Typography
-                  className={classes.title}
-                  color="textSecondary"
-                  gutterBottom
-                >
-                  Tomorrow
-                </Typography>
-                <Typography variant="h5" component="h2">
-                  {tomorrow.summary}
-                </Typography>
-                <div className="weather-icon">
-                  <ReactAnimatedWeather
-                    icon={tomorrow.icon.replace(/-/g, "_").toUpperCase()}
-                    size={80}
-                  />
-                </div>
-                <Typography variant="body1" component="p" color="textSecondary">
-                  {Math.round(tomorrow.temperatureHigh) + " °C"}
-                </Typography>
-                <Typography variant="body1" component="p" color="textSecondary">
-                  {Math.round(tomorrow.temperatureLow) + " °C"}
-                </Typography>
-                <Typography variant="body1" component="p" color="textSecondary">
-                  {String(tomorrow.precipProbability * 100) + " %"}
-                </Typography>
-                <br />
-              </CardContent>
-            </Card>
-          </>
-        );
-      };
-
-      const renderDATom = () => {
-        return (
-          <>
-            <Card className={classes.root}>
-              <CardContent>
-                <Typography
-                  className={classes.title}
-                  color="textSecondary"
-                  gutterBottom
-                >
-                  Day After Tomorrow
-                </Typography>
-                <Typography variant="h5" component="h2">
-                  {datom.summary}
-                </Typography>
-                <div className="weather-icon">
-                  <ReactAnimatedWeather
-                    icon={datom.icon.replace(/-/g, "_").toUpperCase()}
-                    size={80}
-                  />
-                </div>
-                <Typography variant="body1" component="p" color="textSecondary">
-                  {Math.round(datom.temperatureHigh) + " °C"}
-                </Typography>
-                <Typography variant="body1" component="p" color="textSecondary">
-                  {Math.round(datom.temperatureLow) + " °C"}
-                </Typography>
-                <Typography variant="body1" component="p" color="textSecondary">
-                  {String(datom.precipProbability * 100) + " %"}
-                </Typography>
-                <br />
-              </CardContent>
-            </Card>
-          </>
+          <Paper
+            elevation={2}
+            className={classes.smallBlock}
+            style={title == "Day After" ? { marginBottom: 0 } : {}}
+          >
+            <div className={classes.smallBlockElement}>
+              <ReactAnimatedWeather
+                icon={obj.icon.replace(/-/g, "_").toUpperCase()}
+                size={80}
+              />
+            </div>
+            <div className={classes.smallBlockElement}>
+              <Typography
+                className={classes.title}
+                color="textSecondary"
+                gutterBottom
+              >
+                {title}
+              </Typography>
+              <Typography variant="h5" component="h2">
+                {obj.summary}
+              </Typography>
+            </div>
+            <div
+              className={classes.smallBlockElement}
+              style={{ textAlign: "right" }}
+            >
+              <Typography
+                variant="body1"
+                component="p"
+                color="textSecondary"
+                style={{ whiteSpace: "nowrap" }}
+              >
+                {Math.round(obj.temperatureHigh) + " °C"}
+              </Typography>
+              <Typography
+                variant="body1"
+                component="p"
+                color="textSecondary"
+                style={{ whiteSpace: "nowrap" }}
+              >
+                {Math.round(obj.temperatureLow) + " °C"}
+              </Typography>
+              <Typography
+                variant="body1"
+                component="p"
+                color="textSecondary"
+                style={{ whiteSpace: "nowrap" }}
+              >
+                {String(obj.precipProbability * 100) + " %"}
+              </Typography>
+            </div>
+          </Paper>
         );
       };
 
       return (
-        <>
-          <Grid item xs={"auto"}>
-            {renderCurrent()}
+        <Container>
+          <Grid container spacing={3}>
+            <Grid item xs={12} className={classes.gridColumn}>
+              {renderCurrent()}
+            </Grid>
+            <Grid item xs={12} className={classes.gridColumn}>
+              {renderSmall("Today", today)}
+              {renderSmall("Tomorrow", tomorrow)}
+              {renderSmall("Day After", datom)}
+            </Grid>
           </Grid>
-          <Grid item xs={"auto"}>
-            {renderToday()}
-          </Grid>
-          <Grid item xs={"auto"}>
-            {renderTomorrow()}
-          </Grid>
-          <Grid item xs={"auto"}>
-            {renderDATom()}
-          </Grid>
-        </>
+        </Container>
       );
     }
   };
 
   return (
-    <div className="weather">
-      <CssBaseline>
-        <Typography variant="h3">Weather</Typography>
-        <Grid
-          container
-          display="flex"
-          flexDirection="row"
-          spacing={1}
-          justifyContent="center"
-        >
-          {renderWeather()}
-        </Grid>
-      </CssBaseline>
-    </div>
+    <CssBaseline>
+      <Grid
+        container
+        display="flex"
+        flexDirection="row"
+        spacing={1}
+        justifyContent="center"
+        style={{ marginTop: 20 }}
+      >
+        {renderWeather()}
+      </Grid>
+    </CssBaseline>
   );
 }

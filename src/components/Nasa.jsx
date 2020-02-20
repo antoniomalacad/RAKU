@@ -9,7 +9,6 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(theme => ({
   root: {
     color: "#fff",
-    backgroundColor: "#000",
     padding: 0,
     margin: 0,
     maxWidth: "100vw",
@@ -20,11 +19,11 @@ const useStyles = makeStyles(theme => ({
       width: "100vw",
       height: "200vh",
       background:
-        "-moz-linear-gradient(top, rgba(255,255,255,100) 0%,rgb(145, 216, 255) 50%, rgb(33, 80, 135) 75%,rgba(0,0,0,1) 100%)",
+        "-moz-linear-gradient(top, rgba(255,255,255,0) 0%,rgb(145, 216, 255) 50%, rgb(33, 80, 135) 75%,rgba(0,0,0,1) 100%)",
       background:
-        "-webkit-linear-gradient(top,   rgba(255,255,255,100) 0%,rgb(145, 216, 255) 50%, rgb(33, 80, 135) 75%,rgba(0,0,0,1) 100%)",
+        "-webkit-linear-gradient(top,   rgba(255,255,255,0) 0%,rgb(145, 216, 255) 50%, rgb(33, 80, 135) 75%,rgba(0,0,0,1) 100%)",
       background:
-        "linear-gradient(to bottom,  rgba(255,255,255,100) 0%,rgb(145, 216, 255) 50%, rgb(33, 80, 135) 75%,rgba(0,0,0,1) 100%)",
+        "linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgb(145, 216, 255) 50%, rgb(33, 80, 135) 75%,rgba(0,0,0,1) 100%)",
       filter:
         "progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 )"
     }
@@ -110,9 +109,11 @@ export default function Nasa() {
   2. Create conditional rendering based on "loading" state
   */
   return (
-    <Container className={classes.root} id="nasa-wrapper">
+    <div className={classes.root} id="nasa-wrapper" style={{ width: "100%" }}>
       {stars}
-      <Container maxWidth="sm">
+      <Container
+        style={{ backgroundColor: "#000", width: "100%", maxWidth: "unset" }}
+      >
         <Typography variant="h3" className={classes.control}>
           NASA
         </Typography>
@@ -124,6 +125,6 @@ export default function Nasa() {
       <Box width="100%" className="nasa">
         <img src={image} alt="starry sky" id="nasa-image"></img>
       </Box>
-    </Container>
+    </div>
   );
 }
