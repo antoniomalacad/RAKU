@@ -67,15 +67,12 @@ app.put("/api/email-times", async (req, res) => {
     .addTimes(req.body)
     .then(data => res.json(data))
     .catch(e => console.log(e.message));
-})
+});
 
 app.get("/api/email-times/:email", async (req, res) => {
-  emails
-    .getTimes(req.params.email)
-    .then(data => {
-      res.json(data)
-    })
-    .catch(e => console.log(e.message));
+  emails.getTimes(req.params.email).then(data => {
+    res.json(data);
+  });
 });
 
 // happiness cats
@@ -91,6 +88,7 @@ app.get("/api/jokes", async (req, res) => {
   jokes
     .get()
     .then(data => res.json(data))
+
     .catch(e => console.log(e.message));
 });
 
@@ -125,6 +123,41 @@ app.get("/api/weather", async (req, res) => {
   } catch (error) {
     console.error(error);
   }
+});
+
+
+//spotify
+app.get("/api/spotify/token", (req, res) => {
+  axios
+    .post("https://accounts.spotify.com/api/token", null, {
+      params: {
+        grant_type: "client_credentials"
+      },
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      auth: {
+        username: process.env.CLIENT_ID,
+        password: process.env.CLIENT_SECRET
+      }
+    })
+    .then(tokenRes => {
+      return res.json(tokenRes.data);
+    })
+    .catch(e => console.log(e.message));
+
+// horoscopes
+app.get("/api/horoscope/:sign", async (req, res) => {
+  try {
+    const horoscopes = await axios.post(
+      `https://aztro.sameerkumar.website/?sign=${req.params.sign}&day=today`
+    );
+    res.json(horoscopes.data);
+  } catch (error) {
+    console.error(error);
+  }
+
 });
 
 module.exports = app;
