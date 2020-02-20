@@ -95,7 +95,6 @@ app.get("/api/weather", async (req, res) => {
   }
 });
 
-
 //spotify
 app.get("/api/spotify/token", (req, res) => {
   axios
@@ -116,6 +115,7 @@ app.get("/api/spotify/token", (req, res) => {
       return res.json(tokenRes.data);
     })
     .catch(e => console.log(e.message));
+});
 
 // horoscopes
 app.get("/api/horoscope/:sign", async (req, res) => {
@@ -127,7 +127,6 @@ app.get("/api/horoscope/:sign", async (req, res) => {
   } catch (error) {
     console.error(error);
   }
-
 });
 
 module.exports = app;
