@@ -11,36 +11,13 @@ sgMail.setApiKey(process.env.SEND_GRID_API_KEY);
 const quotes = require("./models/quotes.js")(db);
 const news = require("./models/news.js")(db);
 const emails = require("./models/emails.js")(db);
+const cats = require("./models/cats.js")(db);
+const jokes = require("./models/jokes.js")(db);
 
 const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "..", "build")));
 
-
-// async function test() {
-//   const date = new Date();
-//   const currentHour = `${date.getHours()+1}`.padStart(2, "0");
-
-//   Promise.all([
-//     db("emails").where("time", currentHour),
-//     db("quotes").first().orderBy('id', 'desc')
-//   ])
-//   .then(([emailsSentToList, todayQuoteObj]) => {
-//     console.log('&&&&&&&&&&&&&&&&&&&&&', emailsSentToList, todayQuoteObj);
-//     emailsSentToList.forEach(async (emailSentTo) => {
-//       const msg = {
-//         to: emailSentTo,
-//         from: 'test@example.com',
-//         subject: 'Happy! You are cool!',
-//         text: 'Happy',
-//         html: `<strong>${todayQuoteObj.quote}</strong>`
-//       };
-//       const response = await sgMail.send(msg);
-//       console.log('The response of sending email via SendGrid API: ', response);
-//     })
-//   })
-// }
-// test();
 
 cron.schedule("0 0 * * *", async function() {
   console.log("running a task every hour");
@@ -77,7 +54,7 @@ app.get("/api/quotes", async (req, res) => {
     .catch(e => console.log(e.message));
 });
 
-// happiness quotes
+// happiness news
 app.get("/api/news", async (req, res) => {
   news
     .get()
@@ -98,6 +75,22 @@ app.get("/api/email-times/:email", async (req, res) => {
     .then(data => {
       res.json(data)
     })
+    .catch(e => console.log(e.message));
+});
+
+// happiness cats
+app.get("/api/cat-facts", async (req, res) => {
+  cats
+    .getFact()
+    .then(data => res.json(data))
+    .catch(e => console.log(e.message));
+});
+
+// happiness jokes
+app.get("/api/jokes", async (req, res) => {
+  jokes
+    .get()
+    .then(data => res.json(data))
     .catch(e => console.log(e.message));
 });
 
