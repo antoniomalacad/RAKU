@@ -12,19 +12,24 @@ export default function Emails() {
     setTimes([...times, selectedTime]);
     setSelectedTime("00");
   };
+
   const removeTime = inTime => setTimes(times.filter(x => x != inTime));
   const updateTime = e => setSelectedTime(e.target.value);
   const updateEmail = e => setEmail(e.target.value);
   const submitForm = () => {
     axios("/api/email-times", {
-      method: "POST",
+      method: "PUT",
       data: {
         old_email: initialEmail,
         new_email: email,
         times: times
       }
-    });
+    }).then(() => {
+      localStorage.email = email;
+    })
   };
+
+
 
   useEffect(() => {
     if (localStorage.email) {
