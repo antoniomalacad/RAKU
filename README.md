@@ -6,7 +6,7 @@ RAKU – A dashboard designed to make you happy.
 
 You can try this app: https://cc11raku.herokuapp.com/
 
-<img src="https://user-images.githubusercontent.com/56245555/74898034-0d57f480-53dc-11ea-8d63-9f8835fba1f0.png" width="400px">
+<img src="https://user-images.githubusercontent.com/37863665/75003374-ddc3ed80-54aa-11ea-92d7-3f5606a1fb5b.png" width="400px">
 
 ## Setup Instructions
 
