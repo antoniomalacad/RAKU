@@ -1,14 +1,36 @@
 # RAKU
 
-"This was created during our time as students at Code Chrysalis."
+This was created during our time as students at Code Chrysalis.
 
-RAKU – A dashboard designed to make you happy.
+**RAKU** – A dashboard designed to make you happy.
 
-You can try this app: https://cc11raku.herokuapp.com/
+You can try the app here: https://cc11raku.herokuapp.com/
 
-<img src="https://user-images.githubusercontent.com/56245555/74898034-0d57f480-53dc-11ea-8d63-9f8835fba1f0.png" width="400px">
+<img src="https://user-images.githubusercontent.com/37863665/75003374-ddc3ed80-54aa-11ea-92d7-3f5606a1fb5b.png" width="400px">
 
-## Setup Instructions
+# Introducing the Team
+
+### Mary Sedarous (Team Lead, Engineer)
+
+[Github](https://github.com/marysed) | [LinkedIn](https://linkedin.com/in/marysedarous/)
+
+### Sarah Ting (Engineer)
+
+[Github](https://github.com/sarahjting) | [LinkedIn](https://www.linkedin.com/in/sarahjting/)
+
+### Antonio Malacad (Scrum Master, Engineer)
+
+[Github](https://github.com/antoniomalacad) | [LinkedIn](https://linkedin.com/in/antonio-malacad/)
+
+### Kota Aoyama (Tech Lead, Engineer)
+
+[Github](https://github.com/KotaAoyama) | [LinkedIn](https://linkedin.com/in/kota-aoyama/)
+
+### Haruna Utsumi (Engineer)
+
+[Github](https://github.com/harunamarun) | [LinkedIn](linkedin.com/in/harunamarun/)
+
+# Setup Instructions
 
 #### 1. Clone the repo:
 
@@ -25,7 +47,7 @@ yarn
 #### 3. Create database:
 
 ```
-echo "CREATE DATABASE roku;" | psql
+echo "CREATE DATABASE raku;" | psql
 ```
 
 #### 4. Migrate tables:
@@ -42,10 +64,23 @@ yarn migrate
 touch .env
 ```
 
-• Fill .env with API keys from: https://english.api.rakuten.net/
+• Add your API keys from: https://english.api.rakuten.net/ and external services to your .env file.
 
 ```
-API_KEY=[your API_KEY]
+API_KEY=[your API key]
+REACT_APP_NASA_API_KEY = [your API key from NASA]
+CLIENT_ID = [your Spotify developer key]
+CLIENT_SECRET = [your Spotify developer secret key]
+SEND_GRID_API_KEY = [your SendGrid API key]
+```
+
+• Add your database URL, Name, Username, and Password to the .env file.
+
+```
+DATABASE_URL=[your database URL]
+DB_NAME = [your database name]
+DB_USER = [your database username]
+DB_PASSWORD = [your database password]
 ```
 
 #### 6. Start server:
@@ -70,9 +105,9 @@ yarn dev
 yarn build
 ```
 
-## APIs Used
+# APIs Used
 
-#### [Rakuten Rapid API](https://english.api.rakuten.net/)
+## [Rakuten Rapid API](https://english.api.rakuten.net/)
 
 • [Bing News Search](https://english.api.rakuten.net/microsoft-azure/api/bing-news-search/) <br />
 • [Cat Facts](https://english.api.rakuten.net/brianiswu/api/cat-facts) <br />
@@ -81,14 +116,14 @@ yarn build
 • [Good Quotes](https://english.api.rakuten.net/fofo/api/good-quotes/endpoints) <br />
 • [Microsoft Text Analysis](https://english.api.rakuten.net/microsoft-azure/api/microsoft-text-analytics/) <br />
 
-#### Third Party APIs
+## Third Party APIs
 
 • [Aztro Horoscopes](https://aztro.readthedocs.io/en/latest/) <br />
 • [NASA APOD](https://api.nasa.gov/) <br />
 • [SendGrid](https://sendgrid.com/docs/API_Reference/index.html) <br />
 • [Spotify](https://developer.spotify.com/documentation/web-api/) <br />
 
-## Acknowledgements
+# Acknowledgements
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). <br />
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started). <br />
