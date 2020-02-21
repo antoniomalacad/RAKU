@@ -85,7 +85,7 @@ yarn build
 
 • [Aztro Horoscopes](https://aztro.readthedocs.io/en/latest/) <br />
 • [NASA APOD](https://api.nasa.gov/) <br />
-• [sendGrid](https://sendgrid.com/docs/API_Reference/index.html) <br />
+• [SendGrid](https://sendgrid.com/docs/API_Reference/index.html) <br />
 • [Spotify](https://developer.spotify.com/documentation/web-api/) <br />
 
 ## Acknowledgements
